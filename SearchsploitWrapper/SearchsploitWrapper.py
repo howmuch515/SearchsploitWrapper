@@ -48,8 +48,9 @@ import json
 PATH = "/opt/exploit-database/searchsploit"
 
 
-def search(*keywords): 
+def search(*keywords) -> dict: 
+    # get result as json format
     searchword_list = [PATH, "-j"] + list(keywords)
     result_json = check_output(searchword_list)
-    print(result_json)
+
     return json.loads(result_json.decode('utf-8'), strict=False)
